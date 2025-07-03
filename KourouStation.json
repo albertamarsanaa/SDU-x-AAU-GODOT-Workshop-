@@ -1,0 +1,27 @@
+{
+    "Kourou": {
+        "stationAlias": [
+            "KO11",
+            "KO12"
+        ],
+        "coordinates": [
+            "3839.7170150 km",
+            "-5059.4955070 km",
+            "579.8764430 km"
+        ],
+        "plateMotion": [
+            "-0.56e-5 km/year",
+            "-0.13e-5 km/year",
+            "1.20e-5 km/year"
+        ],
+        "refEpoch": "2005-01-01T00:00:00.000 TDB",
+        "refCenter": "Earth",
+        "refAxis": "ITRF",
+        "mountingType": "AZ/EL",
+        "heightAboveAntennaFoot": "0.0 m",
+        "dryOffset": "-3.323 m",
+        "rangeCalLongLoopCorrection": {
+            "X_X": "-97.80 ns"
+        }
+    }
+}
