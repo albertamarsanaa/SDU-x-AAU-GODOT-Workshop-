@@ -1,0 +1,15 @@
+parameters:
+  free: [initial_state_Tyr_center_*]
+  consider: []
+equations:
+- type: expr
+  name: a_priori
+  config: 
+       expr:  
+        - initial_state_Tyr_center_sma = 6578. km @ 2000-01-01T00:00:00.000 TDB | 10.0 km
+        - initial_state_Tyr_center_ecc = 0. @ 2000-01-01T00:00:00.000 TDB | 0.10 
+        - initial_state_Tyr_center_inc = 90 deg @ 2000-01-01T00:00:00.000 TDB | 0.10 deg
+        - initial_state_Tyr_center_ran = -1.19306469722083 rad @ 2000-01-01T00:00:00.000 TDB | 0.10 rad
+        - initial_state_Tyr_center_aop = 2.25115009969338 rad @ 2000-01-01T00:00:00.000 TDB | 0.10 rad
+        - initial_state_Tyr_center_tan = 0. deg @ 2000-01-01T00:00:00.000 TDB | 0.10 deg
+

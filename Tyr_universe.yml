@@ -1,0 +1,142 @@
+version: '3.0'
+
+# Spacetime configuration
+spacetime:
+  system: BCRS  # Barycentric Celestial Reference System, standard for solar system dynamics
+
+# Ephemeris definitions
+ephemeris:
+  - name: de440
+    files:
+      - "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/NASA/de440.bsp"  # Adjust to your path
+  - name: gm440
+    files:
+      - "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/NASA/pck00010.tpc"  # Gravitational constants
+
+# Constants from ephemeris
+constants:
+  ephemeris:
+    - source: gm440
+
+# Ground stations
+stations:
+  - name: earthStations
+    file: "/home/albertbuyanbilegamarsanaa/godot_data/KourouStation.json"  # Path to your ground stations file
+
+# Reference frames
+frames:
+  - name: ephem1
+    type: Ephem
+    config:
+      source: de440
+  - name: Earth
+    type: AxesOrient
+    config:
+      model: IERS2000
+      nutation: "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/nutation2000A.ipf"
+      erp: ''
+  - name: ITRF
+    type: AxesOrient
+    config:
+      model: IERS2000
+      nutation: "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/nutation2000A.ipf"
+      erp: ''
+  - name: Mars
+    type: AxesOrient
+    config:
+      model: MarsIAU2009
+  - name: stations1
+    type: Stations
+    config:
+      source: earthStations
+      points: false
+  - name: stations2
+    type: Stations
+    config:
+      source: earthStations
+      axes: false
+  - name: LocalOrbitalFrame
+    type: AxesLocalOrbital
+    config:
+      center: Mars
+      target: Tyr_center
+      axes: RAC
+  - name: LCROT
+    type: AxesLocalOrbital
+    config:
+      center: Sun
+      target: Mars
+      axes: Pos
+# Celestial bodies
+bodies:
+  - name: Sun
+    point: Sun
+  - name: Earth
+    point: Earth
+  - name: Moon
+    point: Moon
+  - name: Mars
+    point: Mars
+
+# Gravity models
+gravity:
+  - name: solarSystem
+    bodies:
+      - Earth
+      - Moon
+      - Sun
+
+# Dynamics models
+dynamics:
+  - name: solarSystemGravity
+    type: SystemGravity
+    config:
+      model: solarSystem
+      
+  - name: EMS_gravity
+    type: SystemGravity
+    config:
+      model: solarSystem
+
+  - name: NGA
+    type: CalibratedAcceleration
+    config:
+      input:
+          x : NGA_x
+          y : NGA_y
+          z : NGA_z
+      inputAxes: ICRF
+
+  - name: EMS
+    type: Combined
+    config:
+      - EMS_gravity
+      - NGA
+
+# Spacecraft definition
+spacecraft:
+  - name: Tyr
+    mass: 1200 kg
+    thrusters:
+      - name: main
+        thrust: 500 mN
+        isp: 3500 s
+parameters:
+  - name: NGA_x
+    type: ProcessNoiseSet
+    config:
+      gridFile: nga.csv
+      column: 0
+      bias: "0"
+  - name: NGA_y
+    type: ProcessNoiseSet
+    config:
+      gridFile: nga.csv
+      column: 1
+      bias: "0"
+  - name: NGA_z
+    type: ProcessNoiseSet
+    config:
+      gridFile: nga.csv
+      column: 2
+      bias: "0"
