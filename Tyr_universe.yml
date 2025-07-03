@@ -131,7 +131,7 @@ parameters:
   - name: NGA_y
     type: ProcessNoiseSet
     config:
-      gridFile: nga.csv
+      gridFile: nga (2).csv
       column: 1
       bias: "0"
   - name: NGA_z
