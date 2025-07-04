@@ -8,10 +8,10 @@ spacetime:
 ephemeris:
   - name: de440
     files:
-      - "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/NASA/de440.bsp"  # Adjust to your path
+      - "/home/data/de440.bsp"  # Adjust to your path
   - name: gm440
     files:
-      - "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/NASA/pck00010.tpc"  # Gravitational constants
+      - "/home/data/pck00010.tpc"  # Gravitational constants
 
 # Constants from ephemeris
 constants:
@@ -21,7 +21,7 @@ constants:
 # Ground stations
 stations:
   - name: earthStations
-    file: "/home/albertbuyanbilegamarsanaa/godot_data/KourouStation.json"  # Path to your ground stations file
+    file: "/home/data/KourouStation.json"  # Path to your ground stations file
 
 # Reference frames
 frames:
@@ -33,13 +33,13 @@ frames:
     type: AxesOrient
     config:
       model: IERS2000
-      nutation: "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/nutation2000A.ipf"
+      nutation: "/home/data/nutation2000A.ipf"
       erp: ''
   - name: ITRF
     type: AxesOrient
     config:
       model: IERS2000
-      nutation: "/home/albertbuyanbilegamarsanaa/ESA Godot Mani/data/nutation2000A.ipf"
+      nutation: "/home/data/nutation2000A.ipf"
       erp: ''
   - name: Mars
     type: AxesOrient
@@ -125,7 +125,7 @@ parameters:
   - name: NGA_x
     type: ProcessNoiseSet
     config:
-      gridFile: nga.csv
+      gridFile: nga (2).csv
       column: 0
       bias: "0"
   - name: NGA_y
@@ -137,6 +137,6 @@ parameters:
   - name: NGA_z
     type: ProcessNoiseSet
     config:
-      gridFile: nga.csv
+      gridFile: nga (2).csv
       column: 2
       bias: "0"
