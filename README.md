@@ -6,10 +6,7 @@ This repository contains code and materials developed for the **SDU x AAU GODOT 
 
 ## 📁 Contents
 
-- `notebooks/` – Jupyter notebooks demonstrating:
-  - Time handling, orbit propagation, and event detection
-  - Orbit determination and trajectory optimization
-- `scripts/` – Python scripts for reproducibility and automation
+- `.pdf` files for the necessary steps and infos
 - `data/` – Configuration files (e.g. `universe.yml`, `trajectory.yml`)
 - `README.md` – This file with setup instructions and acknowledgements
 
